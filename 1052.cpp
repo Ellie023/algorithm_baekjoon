@@ -2,34 +2,31 @@
 
 using namespace std;
 
+const int MAX=26;
+int bitCount(int n){
+    int cnt =0;
+    for(int i=0; i<MAX; i++){
+        if(n&(1<<i)){
+            cnt++;
+        }
+    }
+    return cnt;
+}
+int minCount(int n, int k){
+    int required=0;//최소 물병의 개수
+    while (true){
+        if(bitCount(n+required)<=k){
+            return required;
+        }
+        required++;
+    }
+}
 int main() {
 
     int n,k;
 
     cin>>n>>k;//입력
 
-    if(n<=k){//옮길 수 있는 병의 개수가 더 큰 경수 안 사도 됨
-        cout<<0<<'\n';
-        return 0;
-    }
-
-    int i;
-    for(i=0; ; i++){
-        int count =0;
-        int tmp=n;
-
-        while (tmp){
-            if(tmp%2){//n을 2로 나눠서 나머지가 존재한다
-                count++;//물병을 산다.
-            }
-            tmp/=2;
-        }
-        if(count<=k){//산 물병이 k개 이하면 조건이 성립
-            break;
-        }
-        n++;
-    }
-    //출력
-    cout<<i<<'\n';
+    cout<<minCount(n,k);
     return 0;
 }

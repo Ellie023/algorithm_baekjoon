@@ -3,9 +3,11 @@
 
 using namespace std;
 
+const int ALL=(1<<21)-1;
+
 int result(int bit,string order){
     if(order=="all"){
-        bit=(1<<21)-1; //10^21-1=111111``
+        bit=ALL;
     }
     else if(order=="empty"){
         bit=0;

@@ -3,7 +3,8 @@
 #include "vector"
 
 using namespace std;
-bool Range(pair<char,int> location){
+typedef pair<char, int> ic;
+bool Range(ic location){
     if(location.first>='A'&&location.first<='H'){
         if(location.second>=1&&location.second<=8)
         {
@@ -12,7 +13,7 @@ bool Range(pair<char,int> location){
     }
     return false;
 }
-pair<char,int>move(string input,char x,char y){
+ic move(string input,char x,char y){
     for(int i=0; i<input.length(); i++){
         char ch=input[i];
         switch (ch) {
@@ -37,7 +38,7 @@ pair<char,int>move(string input,char x,char y){
 
 int main() {
 
-    pair<char, int> king, stone;
+    ic king, stone;
     int n;
     string input;
 
@@ -45,7 +46,7 @@ int main() {
     cin>>king.first>>king.second>>stone.first>>stone.second>>n;
 
     while(n--){
-        pair<char,int> after_king,after_stone;//다음 킹,돌 위치
+        ic after_king,after_stone;//다음 킹,돌 위치
         cin>>input;
         //위치 옮기기
         after_king= move(input,king.first,king.second);

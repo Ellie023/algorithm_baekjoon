@@ -37,6 +37,7 @@ int main() {
     cin>>K;
     for(int t=0; t<K; t++){
         int V,E;
+        cin>>V>>E;
         A.resize(V+1);
         visited.resize(V+1);
         check.resize(V+1);
@@ -47,13 +48,13 @@ int main() {
             A[S].push_back(E);
             A[E].push_back(S);
         }
-        for(int i=1; i<=V; i++){
-            if(IsEven){
+        for(int i=1; i<=V; i++) {
+            if (IsEven) {
                 DFS(i);
-            }
-            else{
+            } else {
                 break;
             }
+        }
             if(IsEven){
                 cout<<"YES"<<"\n";
             }
@@ -66,6 +67,6 @@ int main() {
                 check[i]=0;
             }
         }
-    }
+
     return 0;
 }

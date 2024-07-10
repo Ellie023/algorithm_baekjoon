@@ -51,5 +51,11 @@ int main() {
 
     cin>>now[0]>>now[1]>>now[2];
     BFS();
+
+    for(int i=1; i<201; i++){
+        if(answer[i]){
+            cout<<i<<" ";
+        }
+    }
     return 0;
 }

@@ -15,7 +15,7 @@ int getNum(int x,int y){
     }
 }
 
-int main() {
+int  main() {
 
     int t;
     cin>>t;

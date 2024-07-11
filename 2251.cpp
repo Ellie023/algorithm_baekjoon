@@ -3,12 +3,12 @@
 
 using namespace std;
 
-static int Sender[]={0,1,1,1,2,2};
-static int Receiver[]={1,2,0,2,0,1};
-static bool visited[201][201];
+int Sender[]={0,0,1,1,2,2};
+int Receiver[]={1,2,0,2,0,1};
+bool visited[201][201];
 
-static bool answer[201];
-static int now[3];
+bool answer[201];
+int now[3];
 
 void BFS(){
     queue<pair<int,int>> queue;
@@ -28,7 +28,7 @@ void BFS(){
             next[Receiver[k]]+=next[Sender[k]];
             next[Sender[k]]=0;
 
-            if(next[Receiver[k]]>now[Sender[k]]){
+            if(next[Receiver[k]]>now[Receiver[k]]){
                 next[Sender[k]]=next[Receiver[k]]-now[Receiver[k]];
                 next[Receiver[k]]=now[Receiver[k]];
             }
@@ -37,8 +37,11 @@ void BFS(){
 
                 queue.push(make_pair(next[0],next[1]));
 
+
                 if(next[0]==0){
-                answer[next[2]]=true;}
+                    answer[next[2]]=true;
+
+                }
             }
         }
     }
@@ -50,9 +53,11 @@ int main() {
     cout.tie(NULL);
 
     cin>>now[0]>>now[1]>>now[2];
+
+
     BFS();
 
-    for(int i=1; i<201; i++){
+    for(int i=0; i<201; i++){
         if(answer[i]){
             cout<<i<<" ";
         }

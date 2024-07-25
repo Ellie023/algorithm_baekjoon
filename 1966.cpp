@@ -25,12 +25,13 @@ int main() {
             q.pop();
             if (pq.top() == value) {
                 pq.pop();
-                ++count;
+                count++;
                 if (index == m) {
-                    cout << count << endl;
+                    cout << count << '\n';
                     break;
                 }
-            } else q.push({index, value});
+            }
+            else q.push({index, value});
 
         }
     }

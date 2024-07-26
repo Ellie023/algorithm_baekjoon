@@ -2,24 +2,31 @@
 #include <algorithm>
 #include <vector>
 #include <cmath>
+#include <unordered_map>
 using namespace std;
 
-int main() {
+int main()
+{
+    int N, sum = 0;
+    cin >> N;
+    vector<int> v(N);
+    unordered_map<int, int> freq;
 
-    int n;
-    unordered_map<int,int> freq;
-    cin>>n;
-
-    vector<int> v(n,0);
-    vector<int> bin;
-    int sum=0;
-    for(int i=0; i<n; i++){
-        cin>>v[i];
-        sum+=v[i];
+    for (int i = 0; i < N; i++)
+    {
+        cin >> v[i];
+        sum += v[i];
         freq[v[i]]++;
     }
-    sort(v.begin(),v.end());
-    cout<< round(sum/n)<<'\n'<<v[n/2]<<'\n';
+
+    sort(v.begin(), v.end());
+
+    int size = v.size();
+
+    int mean = round((double)sum / size);
+
+    int center = v[size / 2];
+
     vector<pair<int, int>> tmp(freq.begin(), freq.end());
     sort(tmp.begin(), tmp.end(), [](auto const& l, auto const& r)
     {
@@ -30,7 +37,8 @@ int main() {
 
     if (tmp.size() > 1 && tmp[0].second == tmp[1].second)
         fre = tmp[1].first;
-    cout<<fre<<'\n';
-    cout<<v[n-1]-v[0]<<'\n';
-    return 0;
+
+    int range = v[size - 1] - v[0];
+
+    std::cout << mean << '\n' << center << '\n' << fre << '\n' << range << '\n';
 }

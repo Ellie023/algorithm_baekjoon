@@ -5,14 +5,16 @@
 
 using namespace std;
 
-typedef pair<int,int> edge;
-int V,E,K;
-static vector<int> distancem;
-vector<bool> visited;
-vector<vector<edge>> list;
-priority_queue<edge,vector<edge>,greater<edge>> q;
+
 
 int main() {
+
+    typedef pair<int,int> edge;
+    int V,E,K;
+    vector<int> distancem;
+    vector<bool> visited;
+    vector<vector<edge>> listm;
+    priority_queue<edge,vector<edge>,greater<edge>> q;
 
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -22,13 +24,13 @@ int main() {
     distancem.resize(V+1);
     std::fill(distancem.begin(),distancem.end(),INT_MAX);
     visited.resize(V+1);
-    std::fill(distancem.begin(),distancem.end(), false);
-    list.resize(V+1);
+    std::fill(visited.begin(),visited.end(), false);
+    listm.resize(V+1);
 
     for(int i=0; i<E; i++){
         int u,v,w;
         cin>>u>>v>>w;
-        list[u].push_back(make_pair(v,w));
+        listm[u].push_back(make_pair(v,w));
     }
     q.push(make_pair(0,K));
     distancem[K]=0;
@@ -41,8 +43,8 @@ int main() {
         }
         visited[c_v]=true;
 
-        for(int t=0; t<list[c_v].size(); t++){
-            edge tmp=list[c_v][t];
+        for(int t=0; t<listm[c_v].size(); t++){
+            edge tmp=listm[c_v][t];
             int next=tmp.first;
             int value=tmp.second;
 

@@ -31,6 +31,7 @@ int main() {
         Node u=pq.top();
         pq.pop();
 
+        //adj == 도착도시
         for(int adj=1; adj<=n; adj++){
             if(w[u.second][adj]!=0){
                 if(disQ[adj].size()<k){

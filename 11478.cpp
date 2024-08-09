@@ -9,8 +9,8 @@ int main() {
     cin>>s;
 
     for(int i=0; i<s.length(); i++){
-        for(int j=0; j<s.length(); j++){
-            set.insert(s.substr(i,j-1+1));
+        for(int j=i; j<s.length(); j++){
+            set.insert(s.substr(i,j-i+1));
         }
     }
 

@@ -58,9 +58,9 @@ int main() {
             }
         }
     }
-    parent.resize(n+1);
+    parent.resize(n);
 
-    for(int i=1; i<n+1; i++){
+    for(int i=0; i<n; i++){
         parent[i]=i;
     }
     int useEdge=0;
@@ -75,10 +75,10 @@ int main() {
         }
     }
     if(useEdge==n-1){
-        cout<<result-sum<<'\n';
+        cout<<sum-result<<'\n';
     }
     else{
-        cout<<'-1'<<'\n';
+        cout<<-1<<'\n';
     }
     return 0;
 }

@@ -68,7 +68,7 @@ int find(int a)
         return a;
     }
     else{
-        parent[a]=find(parent[a]);
+       return parent[a]=find(parent[a]);
     }
 }
 void munion (int a, int  b){

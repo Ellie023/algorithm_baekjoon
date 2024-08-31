@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <limits.h>
 
 using namespace std;
 
@@ -9,8 +10,8 @@ vector<vector<int>> visited;
 int dx[] = { -1, 1, 0, 0 }; // 좌, 우, 상, 하
 int dy[] = { 0, 0, -1, 1 };
 
-
-int bfs(int x,int y){
+int t,m,n,k;
+void bfs(int y,int x){
     queue<pair<int,int>> q;
 
     q.push(make_pair(x,y));
@@ -23,11 +24,12 @@ int bfs(int x,int y){
             int nx = cur_x + dx[i];
             int ny = cur_y + dy[i];
 
-            if (nx < 0 || nx >= x || ny < 0 || ny >= y) continue;
-            if (field[nx][ny] == 0) continue;
-            if (field[nx][ny] == 1) {
-                field[nx][ny] = 0;
+            if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
+            if (field[ny][nx] == 0||visited[ny][nx]==1) continue;
+            if (field[ny][nx] == 1) {
+                field[ny][nx] = 0;
                 q.push(make_pair(nx, ny));
+                visited[ny][nx]=1;
             }
         }
     }
@@ -37,37 +39,40 @@ int bfs(int x,int y){
 int main() {
 
 
-    int t,m,n,k,x;
+
 
     cin>>t;
     for(int i=0; i<t; i++) {
 
         cin>>m>>n>>k;
-        field.resize(m, vector<int>(n));
-        visited.resize(m, vector<int>(n));
+        field.assign(n, vector<int>(m,0));
+        visited.assign(n, vector<int>(m,0));
+
        for(int i=0; i<k; i++){
             int x,y;
             cin>>x>>y;
-            field[x][y]=1;
+            field[y][x]=1;
        }
-
-       field.clear();
-       visited.clear();
 
        int result=0;
 
-       for(int i=0; i<m; i++){
-           for(int j=0; j<n; j++){
+       for(int i=0; i<n; i++){
+           for(int j=0; j<m; j++){
                if(field[i][j]==0) continue;
                 else{
-                    bfs(i,j);
+                    bfs (i,j);
                     result++;
                 }
            }
 
        }
 
-       cout<<result;
+       cout<<result<<'\n';
+        field.clear();
+        visited.clear();
+        field.shrink_to_fit();
+        visited.shrink_to_fit();
+
     }
     return 0;
 }

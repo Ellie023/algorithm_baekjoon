@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool Eat(int start,int end, string hamburger){
+bool Eat(int start,int end, string& hamburger){
     for(int j=start; j<=end; j++){
         if(j>=0&&j<hamburger.length()&&hamburger[j]=='H'){
             hamburger[j]='E';
@@ -27,7 +27,7 @@ int main() {
         if(Eat(i-k,i-1,hamburger)){
             ans++;//left
         }
-        if(Eat(i+1,i+k,hamburger)){
+        else if(Eat(i+1,i+k,hamburger)){
             ans++;//right
         }
     }

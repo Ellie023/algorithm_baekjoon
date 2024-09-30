@@ -2,41 +2,49 @@
 #include <vector>
 #include <cmath>
 using namespace std;
-static vector<int> visited;
-static vector<int> map;
-int dy[4]={-1,0,0,1};
-int dx[4]={0,1,-1,0};
-int count=0;
-int n;
-void dfs(int k){
 
-    int number=n/k;
-    for(int a=0; a<number; a++) {
-        for (int i = 0; i < n / k; i +) {
-            for (int j = 0; j < n / k; j++) {
+int arr[129][129];
 
+int white=0;
+int blue=0;
+void dfs(int x,int y,int k){
+
+    bool cut=false;
+    int first_color=arr[x][y];
+    for(int i=x; i<x+k; i++){
+        for(int j=y; j<y+k; j++){
+            if(arr[i][j]!=first_color){
+                cut=true;
+                break;
             }
         }
     }
-}
+    if(cut){
+        dfs(x,y,k/2);
+        dfs(x+k/2,y,k/2);
+        dfs(x,y+k/2,k/2);
+        dfs(x+k/2,y+k/2,k/2);
 
-itoc(n)
-int main() {
-
-
-    cin>>n;
-    map.resize(n);
-    visited.resize(n);
-
-    for(int i=0; i<n; i++){
-        for(int j=0; j<n; j++) {
-            cin >> map[j];
+    }
+    else{
+        if(first_color==1){
+            blue++;
+        }
+        else{
+            white++;
         }
     }
-    int size=log2(n);
+}
+int main() {
 
-    for(int i=2; i<=size; i*=2){
-        dfs(2)
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            cin>>arr[i][j];
+        }
     }
+    dfs(0,0,n);
+    cout<<white<<'\n'<<blue;
     return 0;
 }

@@ -4,9 +4,21 @@
 
 using namespace std;
 
-static vector<int> tree;
+static vector<long> tree;
 static int MOD=1000000007;
-
+void setTree(int i){
+    while(i!=1){
+        tree[i/2]=tree[i/2]*tree[i]%MOD;
+        i--;
+    }
+}
+void changeVal(int index,long val){
+    tree[index]=val;
+    while(index>1){
+        index/=2;
+        tree[index]=tree[index*2]%MOD*tree[index*2+1]%MOD;
+    }
+}
 long getMul(int s, int e){
     long partMul=1;
 
@@ -24,19 +36,8 @@ long getMul(int s, int e){
     }
     return partMul;
 }
-void changeVal(int index,long val){
-    tree[index]=val;
-    while(index>1){
-        index/=2;
-        tree[index]=tree[index*2]%MOD*tree[index*2+1]%MOD;
-    }
-}
-void setTree(int i){
-    while(i!=1){
-        tree[i/2]=tree[i/2]*tree[i]%MOD;
-        i--;
-    }
-}
+
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);

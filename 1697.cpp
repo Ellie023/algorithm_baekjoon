@@ -8,13 +8,13 @@ const int MAX =100001;
 
 int main() {
 
-    ios::sync_with_stdio(false);
+     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
     int n,k;
     cin>>n>>k;
     int minsec[MAX]={0,};
-    int NowN,sec=0;
+    int NowN=0;
 
     queue<int> q;
     q.push(n);
@@ -32,11 +32,11 @@ int main() {
             minsec[NowN-1]=minsec[NowN]+1;
             q.push(NowN-1);
         }
-        if(NowN+1<=MAX&&minsec[NowN+1]==0){
-            minsec[NowN=1]=minsec[NowN]+1;
+        if(NowN+1<MAX&&minsec[NowN+1]==0){
+            minsec[NowN+1]=minsec[NowN]+1;
             q.push(NowN+1);
         }
-        if(2*NowN<=MAX&&minsec[NowN-1]==0){
+        if(2*NowN<MAX&&minsec[NowN*2]==0){
             minsec[NowN*2]=minsec[NowN]+1;
             q.push(NowN*2);
         }

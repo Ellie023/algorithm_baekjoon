@@ -9,8 +9,8 @@ int count(int n, int m, vector<int> &coins){
     dp[0]=1;
 
     for(int i=0; i<n; i++){
-        for(int j=coins[i]; j<=m; j++){
-            dp[j]=dp[j]+dp[j-coins[i]];
+        for(int j=coins[i]; j<=m; j++){//1,2,5
+            dp[j]=dp[j]+dp[j-coins[i]];//21 32 43 54 65 76 87
         }
     }
     return dp[m];

@@ -90,8 +90,8 @@ int main() {
     BFS(1);
 
     for(int k=1; k<=kmax; k++){
-        for(int n=1; n<=k; n++){
-            parent[k][n]=parent[k-1][parent[k-1][n]];
+        for(int N=1; N<=n; N++){
+            parent[k][N]=parent[k-1][parent[k-1][N]];
         }
     }
     cin>>m;

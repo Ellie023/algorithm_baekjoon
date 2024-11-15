@@ -19,7 +19,7 @@ int main() {
     }
     for(int i=N; i>0; i--){
         if(i+T[i]>N+1){
-            D[i]=D[i-1];
+            D[i]=D[i+1];
         }
         else{
             D[i]=max(D[i+1],P[i]+D[i+T[i]]);

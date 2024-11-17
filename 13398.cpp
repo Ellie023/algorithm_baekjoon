@@ -3,10 +3,10 @@
 #include <cmath>
 using namespace std;
 
-int n;
-vector<int> A,L,R;
 
 int main() {
+    int n;
+    vector<int> A,L,R;
 
     cin>>n;
     A.resize(n);
@@ -25,7 +25,7 @@ int main() {
     }
     R.resize(n);
     R[n-1]=A[n-1];
-    for(int i=n-2; i>=0; i++){
+    for(int i=n-2; i>=0; i--){
         R[i]=max(A[i],R[i+1]+A[i]);
     }
     for(int i=1; i<n-1; i++){

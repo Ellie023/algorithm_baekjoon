@@ -30,7 +30,7 @@ int main() {
 
     for(int i=1; i<=A.size(); i++){
         for(int j=1; j<=B.size(); j++){
-            if(A[i-1]==B[i-1]){
+            if(A[i-1]==B[j-1]){
                 DP[i][j]=DP[i-1][j-1]+1;
 
             }

@@ -14,7 +14,7 @@ int main() {
     for(int i=2;  i<=n; i++){
         for(int j=1; j<=L; j++){
             for(int k=1; k<=R; k++){
-                D[i][j][k]=(D[i-1][j][k]*(i-2))+D[i-1][j][k-1]+D[i-1][j-1][k])%mod;
+                D[i][j][k]=(D[i-1][j][k]*(i-2)+(D[i-1][j][k-1]+D[i-1][j-1][k]))%mod;
             }
         }
     }

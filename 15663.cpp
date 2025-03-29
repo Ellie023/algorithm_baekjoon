@@ -17,8 +17,8 @@ set<vector<int>> s;
 void dfs(int k){
     if(k==M){
         vector<int> v;
-        for(auto i=0; i<M; i++){
-            v.push_back(ans[i]);
+        for(auto j=0; j<M; j++){
+            v.push_back(ans[j]);
         }
         s.insert(v);
         v.clear();

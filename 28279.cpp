@@ -1,46 +1,54 @@
 #include <iostream>
-#include <stack>
+#include <deque>
 using namespace std;
 
 int main() {
     ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    cin.tie(nullptr);
 
-    int N,cmp,X;
+    int n;
+    cin >> n;
 
-    cin>>N;
+    deque<int> dq;
 
-    stack<int> s;
+    while (n--) {
+        int cmd;
+        cin >> cmd;
 
-    for(int i=0; i<N; i++){
-        cin>>cmp;
-        if(cmp==1){
-            cin>>X;
-            s.push(X);
-        }
-        else if(cmp==2){
-            if(!s.empty()){
-                cout<<s.top()<<'\n';
-                s.pop();
-            }
-            else{
-                cout<<-1<<'\n';
-            }
-        }
-        else if(cmp==3){
-            cout<<s.size()<<'\n';
-        }
-        else if(cmp==4){
-            cout<<(s.empty()?1:0)<<"\n";
-        }
-        else if (cmp==5){
-            if (!s.empty()) {
-                cout << s.top() << '\n';
+        if (cmd == 1) {
+            int x;
+            cin >> x;
+            dq.push_front(x);
+        } else if (cmd == 2) {
+            int x;
+            cin >> x;
+            dq.push_back(x);
+        } else if (cmd == 3) {
+            if (!dq.empty()) {
+                cout << dq.front() << '\n';
+                dq.pop_front();
             } else {
                 cout << -1 << '\n';
             }
+        } else if (cmd == 4) {
+            if (!dq.empty()) {
+                cout << dq.back() << '\n';
+                dq.pop_back();
+            } else {
+                cout << -1 << '\n';
+            }
+        } else if (cmd == 5) {
+            cout << dq.size() << '\n';
+        } else if (cmd == 6) {
+            cout << (dq.empty() ? 1 : 0) << '\n';
+        } else if (cmd == 7) {
+            if (!dq.empty()) cout << dq.front() << '\n';
+            else cout << -1 << '\n';
+        } else if (cmd == 8) {
+            if (!dq.empty()) cout << dq.back() << '\n';
+            else cout << -1 << '\n';
         }
     }
+
     return 0;
 }

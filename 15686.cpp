@@ -35,7 +35,8 @@ int main() {
             cin >> city[i][j];
             if (city[i][j] == 1) {
                 houses.emplace_back(i, j);
-            } else if (city[i][j] == 2) {
+            }
+            else if (city[i][j] == 2) {
                 chickens.emplace_back(i, j);
             }
         }

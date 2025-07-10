@@ -10,8 +10,8 @@ int main() {
     int n;
     cin>>n;
 
-    vector<int> arr(n,0);
-    deque<int> deque;
+    vector<int> arr(n);
+    deque<int> dq;
     for(int i=0; i<n; i++){
         cin>>arr[i];
     }
@@ -19,16 +19,16 @@ int main() {
     for(int i=0; i<n; i++){
         cin>>a;
         if(!arr[i]){
-            deque.push_back(a);
+            dq.push_back(a);
         }
     }
     int m;
     cin>>m;
     while(m--){
         cin>>a;
-        deque.push_front(a);
-        cout<<deque.back()<<' ';
-        deque.pop_back();
+        dq.push_front(a);
+        cout<<dq.back()<<' ';
+        dq.pop_back();
     }
 
     return 0;

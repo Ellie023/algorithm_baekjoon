@@ -56,6 +56,7 @@ int bfs(Shark &shark){
         int d, fx, fy;
         tie(d, fx, fy) = fishList[0];
 
+
         shark.x = fx;
         shark.y = fy;
         shark.time += d;
